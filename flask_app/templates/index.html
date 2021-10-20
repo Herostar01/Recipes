@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <style>
+        .div {
+            width: 350px;
+            height: 600px;
+            border: 3px solid black;
+            margin: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            margin: 15px;
+            margin-top: 25px;
+        }
+        input {
+            border: 2px solid black;
+        }
+        .register {
+            margin-top: 25px;
+            box-shadow: 5px 5px;
+            border: 2px solid black;
+        }
+        .container {
+            display: flex;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class=container>
+
+        <div class="div"> 
+
+            <h1>Register</h1>
+
+            <form class="form" action="/register" method="POST">
+                {% with messages = get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Flash AHHHHHHH!!!!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+                    <label for="fname">First Name:</label>
+                    <input type="text" name="first_name">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" name="last_name">
+                    <label for="email" >Email:</label>
+                    <input type="text" name="email">
+                    <label for="password"> Password: </label>
+                    <input type="text" name="password" > 
+                    <label for="cpassword"> Confirm Password: </label> 
+                    <input type="text" name="confirm"> 
+                    <input class="register" type="submit" value="Register"> 
+            </form> 
+
+        </div>
+
+        <div class="div"> 
+
+            <h1>Login</h1> 
+            <form class="form" action="/login" method="POST"> 
+                    <label for="email" >Email:</label>
+                    <input type="text" name="email">
+                    <label for="password"> Password: </label>
+                    <input type="text" name="password" >
+                    <input class="register" type="submit" value="Login"> 
+            </form> 
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
